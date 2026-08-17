@@ -181,7 +181,7 @@ export function analyzeUrlMock(rawUrl: string): ScanResult {
     });
   }
 
-  const score = scoreFrom(indicators, indicators[0].severity === "info" ? 5 : 10);
+  const score = scoreFrom(indicators, indicators[0]?.severity === "info" ? 5 : 10);
   const url_analysis: UrlAnalysis = {
     domain: host,
     protocol: url.protocol.replace(":", "").toUpperCase(),
