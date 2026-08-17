@@ -14,15 +14,22 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "hover:bg-accent/15 hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        neon: "bg-primary text-primary-foreground font-semibold shadow-[0_0_24px_-6px_color-mix(in_oklab,var(--primary)_70%,transparent)] hover:brightness-110",
+        hero: "bg-[image:var(--gradient-cyan)] text-primary-foreground font-semibold shadow-[0_10px_40px_-12px_color-mix(in_oklab,var(--primary)_80%,transparent)] hover:brightness-110",
+        glass:
+          "glass text-foreground hover:border-primary/50 hover:text-primary",
+        danger: "bg-critical/15 text-critical border border-critical/40 hover:bg-critical/25",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3 text-xs",
+        lg: "h-12 rounded-lg px-7 text-base",
+        xl: "h-14 rounded-xl px-8 text-base",
+        icon: "h-10 w-10",
       },
+
     },
     defaultVariants: {
       variant: "default",
