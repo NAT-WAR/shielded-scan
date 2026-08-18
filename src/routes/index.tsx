@@ -1,24 +1,60 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Hero } from "@/components/landing/Hero";
+import { ProblemSection } from "@/components/landing/ProblemSection";
+import { FeaturesSection } from "@/components/landing/FeaturesSection";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { Button } from "@/components/ui/button";
+import { PrivacyNote } from "@/components/common/PrivacyNote";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "ScamShield — Don't Get Scammed. Scan It First." },
+      {
+        name: "description",
+        content:
+          "Scan suspicious websites, screenshots, QR codes and SMS for scam signals and get a clear risk score with reasons and safety advice.",
+      },
+      { property: "og:title", content: "ScamShield — Don't Get Scammed. Scan It First." },
+      {
+        property: "og:description",
+        content:
+          "Multi-modal scam detection built for Indian users: URL, screenshot, QR and message analysis.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <ProblemSection />
+      <FeaturesSection />
+      <HowItWorks />
+
+      <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6">
+        <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
+          <div className="rounded-3xl border border-primary/25 bg-card/60 p-8 sm:p-12 glow-border">
+            <h2 className="font-display text-3xl font-bold sm:text-4xl">
+              Check it before you tap, pay or reply.
+            </h2>
+            <p className="mt-3 max-w-xl text-muted-foreground">
+              Run your first scan in seconds. No sign-up, no credentials, no payments — ever.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Button asChild variant="hero" size="xl">
+                <Link to="/scan">Scan Now</Link>
+              </Button>
+              <Button asChild variant="glass" size="xl">
+                <Link to="/learn">Learn to spot a scam</Link>
+              </Button>
+            </div>
+          </div>
+          <PrivacyNote />
+        </div>
+      </section>
+    </>
   );
 }
