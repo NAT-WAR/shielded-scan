@@ -107,8 +107,8 @@ function ScanPage() {
   function choose(next: ScanInputType) {
     setSelected(next);
     setError(null);
-    navigate({ to: "/scan", search: { type: next }, replace: true });
   }
+
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">

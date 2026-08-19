@@ -42,12 +42,15 @@ export function ensureSeeded(): void {
 }
 
 export function listScans(): ScanResult[] {
+  ensureSeeded();
   return read().sort((a, b) => b.created_at.localeCompare(a.created_at));
 }
 
 export function getScan(id: string): ScanResult | undefined {
+  ensureSeeded();
   return read().find((s) => s.scan_id === id);
 }
+
 
 export function saveScan(scan: ScanResult): void {
   write([scan, ...read().filter((s) => s.scan_id !== scan.scan_id)]);
